@@ -1,3 +1,4 @@
+/*tooltip*/
 * {
   box-sizing: border-box;
   padding: 0;
@@ -30,7 +31,6 @@ main {
 }
 .card__image-container p {
   color: #bcbcbc;
-
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -63,17 +63,16 @@ main {
   justify-content: center;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
 }
 .card__info i {
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-size: 18px;
   height: 34px;
   width: 34px;
   border-radius: 50%;
-
   background-color: #9092e1;
 }
 
@@ -99,38 +98,47 @@ main {
   transform: scale(1.1);
 }
 
-/*tooltip*/
-
 .tooltip-toggle {
   text-decoration: none;
   color: #000;
 }
-.tooltip-toggle::before,
-.tooltip-toggle::after {
+.tooltip-toggle::before {
   --scale: 0;
   position: absolute;
   content: attr(data-title);
   height: 25px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
   width: max-content;
   transform: translateX(-16%) translateY(-120%) scale(var(--scale));
   transform: 150ms transform;
   transform-origin: bottom center;
-}
-.tooltip-toggle::before {
   background: rgba(0, 0, 0, 0.76);
   text-align: center;
   color: #fff;
   padding: 10px;
 }
-.tooltip-toggle:hover::before,
-.tooltip-toggle:hover::after {
-  --scale: 1;
-}
 .tooltip-toggle::after {
+  --scale: 0;
+  position: absolute;
+  content: attr(data-title);
+  height: 25px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  transform: translateX(-16%) translateY(-120%) scale(var(--scale));
+  transform: 150ms transform;
+  transform-origin: bottom center;
   content: "";
   border: 10px solid transparent;
   transform: translateX(-222%) translateY(-30%) scale(var(--scale));
   border-top-color: rgba(0, 0, 0, 0.76);
+}
+.tooltip-toggle:hover::before {
+  --scale: 1;
+}
+.tooltip-toggle:hover::after {
+  --scale: 1;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -138,20 +146,18 @@ main {
     grid-column-end: span 6;
   }
 }
-
 @media only screen and (max-width: 700px) {
   .card {
     grid-column-end: span 12;
   }
 }
-
 @media only screen and (max-width: 500px) {
   .cards {
-    grid-column: 2 / span 6;
+    grid-column: 2/span 6;
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 20px;
   }
   .card {
     grid-column-end: span 6;
   }
-}
+}/*# sourceMappingURL=style.css.map */
